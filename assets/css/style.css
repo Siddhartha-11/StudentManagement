@@ -55,7 +55,7 @@ a {
 }
 
 .text-light{
-    color: var(--light);
+    color: var(--dark);
 }
 
 .text-gradient{
@@ -66,7 +66,7 @@ a {
 }
 
 #header nav{
-    background-color: #06d6a0;
+    background-color: #899cdc;
     padding: 1em 0;
     width: 100%;
 }
@@ -89,6 +89,7 @@ table{
     border-spacing: 0px;
     width: 100%;
 }
+
 
 .table td, .table th{
     padding: .75em;
@@ -230,3 +231,108 @@ table{
     background-color: var(--dark);
     color: var(--border);
 }
+
+
+
+
+
+
+
+/* loginpage css  */
+
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Poppins',sans-serif;
+}
+
+header {
+	background-color: #738db6;
+	color: #fff;
+	padding: 10px;
+	text-align: right;
+}
+
+.datetime {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.main {
+	margin-top: 50px;
+	text-align: center;
+}
+
+.login-box {
+	display: inline-block;
+	background-color: #f2f2f2;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	box-shadow: 0 0 10px #ccc;
+	padding: 20px;
+	margin: 20px;
+	width: 300px;
+}
+
+h1 {
+	font-size: 36px;
+	margin-bottom: 30px;
+}
+
+h2 {
+	font-size: 24px;
+	margin-bottom: 20px;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+label {
+	font-size: 18px;
+	margin-bottom: 10px;
+}
+
+input[type="text"], input[type="password"], input[type="submit"] {
+	font-size: 18px;
+	padding: 10px;
+	margin-bottom: 20px;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+input[type="submit"] {
+	background-color: #7388c5;
+	color: #fff;
+	cursor: pointer;
+}
+
+input[type="submit"]:hover {
+	background-color: #737dbe;
+}
+.login-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	margin-top: 50px;
+}
+
+
+.logout-btn{
+    float: right;
+   padding: 20px;
+}
+
+
+
+
+

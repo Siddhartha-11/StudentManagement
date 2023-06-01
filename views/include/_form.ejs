@@ -1,14 +1,31 @@
  <!-- form handling -->
  <form action="/api/users" method="POST" id="add_user">
-    <div class="new_user">
+    <div class="new_user"> 
         <div class="form-group">
             <label for="name" class="text-light">Name</label>
             <input type="hidden" name="id" value="">
-            <input type="text" name="name" value="" placeholder="Mark Stoenis">
+            <input type="text" name="name" value="" placeholder="">
         </div>
         <div class="form-group">
             <label for="Email" class="text-light">Email</label>
-            <input type="text" name="email" value="" placeholder="example@gmail.com">
+            <input type="text" name="email" value="" placeholder="">
+        </div>
+
+        <div class="form-group">
+            <label for="DOB" class="text-light">DOB</label>
+            <input type="date" name="DOB" value="" placeholder="">
+        </div>
+        <div class="form-group">
+            <label for="Phone" class="text-light">Phone</label>
+            <input type="text" name="Phone" value="" placeholder="">
+        </div>
+        <div class="form-group">
+            <label for="Address" class="text-light">Address</label>
+            <input type="text" name="Address" value="" placeholder="">
+        </div>
+        <div class="form-group">
+            <label for="Roll" class="text-light">Roll</label>
+            <input type="text" name="Roll" value="" placeholder="">
         </div>
         <div class="form-group">
             <label for="gender" class="text-light">Gender</label>
@@ -34,9 +51,74 @@
             </div>
         </div>
 
+        <div id="grades-container">
+            <!-- grade field to be added here  -->
+        </div>
+
+        <button type="button" id="add-grade-btn">Add Grade</button>
+
+        
+
         <div class="form-group">
             <button type="submit" class="btn text-dark update">Save</button>
         </div>
 
     </div>
 </form>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+    let gradeIndex = 0; // Keep track of the grade index
+
+    // Add grade fields when the "Add Grade" button is clicked
+    $('#add-grade-btn').click(function() {
+      const gradeFields = `
+        <div class="grade-fields">
+          <label for="sem-${gradeIndex}" class="text-light">Semester</label>
+          <input type="text" id="sem-${gradeIndex}" name="grade[${gradeIndex}][sem]" value="" placeholder="Semester" >
+
+          <label for="papercode-${gradeIndex}" class="text-light">Paper Code</label>
+          <input type="text" id="papercode-${gradeIndex}" name="grade[${gradeIndex}][papercode]" value="" placeholder="Paper Code" >
+
+          <label for="score-${gradeIndex}" class="text-light">Score</label>
+          <input type="text" id="score-${gradeIndex}" name="grade[${gradeIndex}][score]" value="" placeholder="Score" >
+        </div>
+      `;
+
+      $('#grades-container').append(gradeFields);
+      gradeIndex++; // Increment the grade index
+    });
+
+    // Handle form submission
+    $('#user-form').submit(function(event) {
+      event.preventDefault(); // Prevent default form submission
+
+      const grades = [];
+      $('.grade-fields').each(function(index, element) {
+        const sem = $(element).find(`#sem-${index}`).val();
+        const papercode = $(element).find(`#papercode-${index}`).val();
+        const score = $(element).find(`#score-${index}`).val();
+
+        const grade = {
+          sem: sem,
+          papercode: papercode,
+          score: score
+        };
+
+        grades.push(grade);
+      });
+
+      // Assign the grades array to the hidden input field
+      $('<input>').attr({
+        type: 'hidden',
+        name: 'grade',
+        value: JSON.stringify(grades)
+      }).appendTo('#user-form');
+
+      // Submit the form
+      this.submit();
+    });
+  });
+</script>

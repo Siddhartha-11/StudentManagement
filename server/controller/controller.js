@@ -8,19 +8,28 @@ exports.create = (req,res)=>{
         return;
     }
 
+    const grades=req.body.grade;
+    console.log(grades)
+
     // new user
     const user = new Userdb({
         name : req.body.name,
         email : req.body.email,
         gender: req.body.gender,
-        status : req.body.status
+        status : req.body.status,
+        DOB:req.body.DOB,
+        Phone:req.body.Phone,
+        Address:req.body.Address,
+        Roll:req.body.Roll,
+        grade:grades
+
     })
 
     // save user in the database
     user
         .save(user)
         .then(data => {
-            //res.send(data)
+            res.send(data)
             res.redirect('/add-user');
         })
         .catch(err =>{
@@ -84,6 +93,10 @@ exports.update = (req, res)=>{
         })
 }
 
+
+
+
+
 // Delete a user with specified user id in the request
 exports.delete = (req, res)=>{
     const id = req.params.id;
@@ -104,3 +117,6 @@ exports.delete = (req, res)=>{
             });
         });
 }
+
+
+  

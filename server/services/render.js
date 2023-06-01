@@ -27,3 +27,21 @@ exports.update_user = (req, res) =>{
             res.send(err);
         })
 }
+
+
+//this one below
+// exports.view_user = (req, res) =>{
+//     axios.get('http://localhost:3000/api/users/', { params : { id : req.query.id }})
+//         .then(function(userdata){
+//             console.log(userdata)
+//             res.render("view_user", { user : userdata.data})
+//         })
+//         .catch(err =>{
+//             res.send(err);
+//         })
+// }
+
+exports.login = (req, res) =>{
+    res.render('login');
+}
+  

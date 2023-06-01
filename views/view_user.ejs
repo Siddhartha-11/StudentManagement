@@ -1,0 +1,172 @@
+
+
+
+ 
+
+
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+  
+    body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f1f1f1;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  color: #333;
+  text-align: center;
+}
+
+form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+input[type="submit"] {
+  background-color: #4CAF50;
+  color: #fff;
+  cursor: pointer;
+}
+
+table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    th {
+      background-color: #f2f2f2;
+    }
+
+@media only screen and (max-width: 768px) {
+  /* Adjust the layout for smaller screens */
+  .container {
+    padding: 10px;
+  }
+
+  form {
+    padding: 10px;
+  }
+
+  table {
+    font-size: 14px;
+  }
+}
+
+  </style>
+</head>
+<body>
+
+    <% const gradearr = user.grade; %>
+
+  <center>
+    <h1>Student Information</h1> 
+    
+  </center>
+  <a href="http://localhost:3000/" class="logout-btn">Logout</a>
+  
+  <form id="studentForm">
+    <br> <br><label for="name">Name:</label> <br> <br>
+    <input type="text" id="name"  value=<%= user.name %>>
+  
+    <br> <br><label for="email">Email:</label> <br> <br>
+    <input type="email" id="email" value=<%= user.email %>>
+  
+    <br> <br><label for="gender">Gender:</label> <br> <br>
+    <input type="gender" id="gender" value=<%= user.gender %>>
+  
+    <br> <br><label for="status">Status:</label> <br> <br>
+    <input type="text" id="status" value=<%= user.status %>>
+  
+    <br> <br><label for="dob">Date of Birth:</label> <br> <br>
+    <input type="dob" id="dob" value=<%= user.DOB %>>
+  
+    <br> <br><label for="phone">Phone Number:</label> <br> <br>
+    <input type="tel" id="phone" value=<%= user.Phone %>>
+  
+    <br> <br><label for="address">Address:</label> <br> <br>
+    <input id="address" value=<%= user.Address %>></input>
+  
+    <br> <br><label for="roll">Roll Number:</label> <br> <br>
+    <input type="text" id="roll" value=<%= user.Roll %>>
+
+    
+   
+  </form>
+  
+  <main>
+    <main>
+        <body>
+            <center>
+                <h1>Check your Results</h1>   
+            </center>
+
+
+            <table>
+                <thead>
+                  <tr>
+                    <th>Semester</th>
+                    <th>Paper Code</th>
+                    <th>Score</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% for (let i = 0; i < gradearr.length  ; i++) { %>
+                    <tr>
+                      <td><%= gradearr[i].sem %></td>
+                      <td><%= gradearr[i].papercode %></td>
+                      <td><%= gradearr[i].score %></td>
+                    </tr>
+                  <% } %>
+                </tbody>
+              </table>
+
+            
+           
+        </main>
+
+
+
+
+
+
+
+
+<!-- Main Site -->
+
+<!-- /Main Site -->
+
+<!-- include footer -->
+<%- include('include/_footer') %>
+<!-- /include footer -->
