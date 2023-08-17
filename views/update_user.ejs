@@ -1,0 +1,144 @@
+
+<!-- include header -->
+<%- include('include/_header') %>
+<!-- /include header -->
+
+  <!-- Main Site -->
+  <main id="site-main">
+    <div class="container">
+        <div class="box-nav d-flex justify-between">
+           <div class="filter">
+               <a href="/admin"><i class="fas fa-angle-double-left"></i>Student List</a>
+           </div>
+        </div>
+        <div class="form-title text-center">
+            <h2 class="text-dark">Update Student</h2>
+            <span class="text-light">Use the below form to Update a student account</span>
+        </div>
+
+        <!-- add user form -->
+         <!-- form handling -->
+ <form method="POST" id="update_user">
+    <div class="new_user">
+        <div class="form-group">
+            <label for="name" class="text-light">Name</label>
+            <input type="hidden" name="id" value="<%= user._id %>">
+            <input type="text" name="name" value="<%= user.name %>" placeholder="">
+        </div>
+        <div class="form-group">
+            <label for="Email" class="text-light">Email</label>
+            <input type="text" name="email" value="<%= user.email%>" placeholder="">
+        </div>
+        <div class="form-group">
+            <label for="DOB" class="text-light">DOB</label>
+            <input type="date" name="DOB" value="<%= user.DOB%>" placeholder="">
+        </div>
+        <div class="form-group">
+            <label for="Phone" class="text-light">Phone</label>
+            <input type="text" name="Phone" value="<%= user.Phone%>" placeholder="">
+        </div>
+        <div class="form-group">
+            <label for="Address" class="text-light">Address</label>
+            <input type="text" name="Address" value="<%= user.Address%>" placeholder="">
+        </div>
+        <div class="form-group">
+            <label for="Roll" class="text-light">Roll Number</label>
+            <input type="text" name="Roll" value="<%= user.Roll%>" placeholder="">
+        </div>
+
+
+        <!-- Grade fields -->
+        <div id="grades-container">
+            <% for (let i = 0; i < user.grade.length; i++) { %>
+              <div class="form-group grade-fields">
+                <label for="sem-<%= i %>" class="text-light">Semester</label>
+                <input type="text" id="sem-<%= i %>" name="grade[<%= i %>][sem]" value="<%= user.grade[i].sem %>" placeholder="">
+  
+                <label for="papercode-<%= i %>" class="text-light">Paper Code</label>
+                <input type="text" id="papercode-<%= i %>" name="grade[<%= i %>][papercode]" value="<%= user.grade[i].papercode %>" placeholder="">
+  
+                <label for="score-<%= i %>" class="text-light">Score</label>
+                <input type="text" id="score-<%= i %>" name="grade[<%= i %>][score]" value="<%= user.grade[i].score %>" placeholder="">
+              </div>
+            <% } %>
+          </div>
+  
+          <button type="button" id="add-grade-btn">Add Grade</button>
+
+       
+
+        <div class="form-group">
+            <label for="gender" class="text-light">Gender</label>
+            <div class="radio inline">
+                <input type="radio" id="radio-2" name="gender" value="Male" <%= user.gender == 'Male' ? 'checked' : '' %>>
+                <label for="radio-2" class="radio-label">Male</label>
+            </div>
+            <div class="radio inline">
+                <input type="radio" id="radio-3" name="gender" value="Female"  <%= user.gender == 'Female' ? 'checked' : '' %> >
+                <label for="radio-3" class="radio-label">Female</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="gender" class="text-light">Status</label>
+            <div class="radio inline">
+                <input type="radio" id="radio-4" name="status" value="Active" <%= user.status == 'Active' ? 'checked' : '' %> >
+                <label for="radio-4" class="radio-label">Active</label>
+            </div>
+            <div class="radio inline">
+                <input type="radio" id="radio-5" name="status" value="Inactive" <%= user.status == 'Inactive' ? 'checked' : '' %> >
+                <label for="radio-5" class="radio-label">Inactive</label>
+            </div>
+        </div>
+        
+    </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn text-dark update">Save</button>
+        </div>
+
+    </div>
+</form>
+       
+    </div>
+</main>
+<!-- /Main Site -->
+
+<!-- include footer -->
+<%- include('include/_footer') %>
+<!-- /include footer -->
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+  $(document).ready(function() {
+    let gradeIndex = <%= user.grade.length %>; // Keep track of the grade index
+    console.log(gradeIndex)
+
+    // Add grade fields when the "Add Grade" button is clicked
+    $('#add-grade-btn').click(function() {
+      const gradeFields = `
+        <div class="form-group grade-fields">
+          <label for="sem-${gradeIndex}" class="text-light">Semester</label>
+          <input type="text" id="sem-${gradeIndex}" name="grade[${gradeIndex}][sem]" value="" placeholder="Semester">
+
+          <label for="papercode-${gradeIndex}" class="text-light">Paper Code</label>
+          <input type="text" id="papercode-${gradeIndex}" name="grade[${gradeIndex}][papercode]" value="" placeholder="Paper Code">
+
+          <label for="score-${gradeIndex}" class="text-light">Score</label>
+          <input type="text" id="score-${gradeIndex}" name="grade[${gradeIndex}][score]" value="" placeholder="Score">
+        </div>
+      `;
+
+      $('#grades-container').append(gradeFields);
+      gradeIndex++; // Increment the grade index
+    });
+});
+</script>
+   
+
+
+

@@ -1,0 +1,213 @@
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Poppins',sans-serif;
+}
+
+header {
+	background-color: #738db6;
+	color: #fff;
+	padding: 10px;
+	text-align: right;
+}
+
+.datetime {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.main {
+	margin-top: 50px;
+	text-align: center;
+}
+
+.login-box {
+	display: inline-block;
+	background-color: #f2f2f2;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	box-shadow: 0 0 10px #ccc;
+	padding: 20px;
+	margin: 20px;
+	width: 300px;
+}
+
+h1 {
+	font-size: 36px;
+	margin-bottom: 30px;
+}
+
+h2 {
+	font-size: 24px;
+	margin-bottom: 20px;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+label {
+	font-size: 18px;
+	margin-bottom: 10px;
+}
+
+input[type="text"], input[type="password"], input[type="submit"] {
+	font-size: 18px;
+	padding: 10px;
+	margin-bottom: 20px;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+input[type="submit"] {
+	background-color: #7388c5;
+	color: #fff;
+	cursor: pointer;
+}
+
+input[type="submit"]:hover {
+	background-color: #737dbe;
+}
+.login-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	margin-top: 50px;
+}
+
+
+</style>
+
+
+
+  <!-- Main Site -->
+  <main id="site-main">
+    <div class="container">
+        <header>
+            <div class="datetime">
+                <p id="date"></p>
+                <p id="time"></p>
+            </div>
+        </header>
+        <main>
+            <center>
+                <h1>Guwahati University</h1>  
+            </center>
+            <div class="login-container">
+                <div class="login-box">
+                    <center>
+                        <h2>Admin Login</h2>  
+                    </center>
+                    <form action="POST" id="admin-form">
+                        <center>
+                            <label for="admin-username">Username</label>   
+                        </center>
+                        <input type="text" id="admin-username" name="admin-username" required>
+                        <center>
+                            <label for="admin-password">Password</label>
+                        </center>
+                        <input type="password" id="admin-password" name="admin-password" required>
+                        <input type="submit" value="Login">
+                </div>
+                <div class="login-box">
+                    <center>
+                        <h2>Student Login</h2>    
+                    </center>
+                </form>
+
+                    <form id="student-form" action="POST" >
+                        <center>
+                            <label for="student-email">Email</label>
+                        </center>
+                        <input type="text" id="student-email" name="student-email" required>
+                        <center>
+                        <label for="student-password">Password</label>
+                        </center>
+                        <input type="password" id="student-password" name="student-password" required>
+                        <input type="submit" value="Login">
+                    </form>
+                </div>
+            </div>
+        </main>
+
+       
+       
+    </div>
+</main>
+<!-- /Main Site -->
+
+<!-- include footer -->
+<%- include('include/_footer') %>
+<!-- /include footer -->
+
+
+
+<script>
+
+function updateTime() {
+    let today = new Date();
+    let date = today.toLocaleDateString();
+    let time = today.toLocaleTimeString();
+    document.getElementById("date").innerHTML = "Date: " + date + "&nbsp;&nbsp;";
+    document.getElementById("time").innerHTML = "Time: " + time;
+}
+
+updateTime();
+setInterval(updateTime, 1000);
+
+document.getElementById("admin-form").addEventListener("submit", function(event) {
+  event.preventDefault(); // Prevent form submission
+
+  // Get form data
+  var name = document.getElementById("admin-username").value;
+  var pass = document.getElementById("admin-password").value;
+
+  if(name=="admin" && pass=="password"){
+    window.location.href = "http://localhost:3000/admin";
+  }else{
+    alert("wrong password")
+  }
+
+  // Clear form inputs
+  document.getElementById("name").value = "";
+  document.getElementById("email").value = "";
+});
+
+
+
+document.getElementById("student-form").addEventListener("submit", function(event) {
+  event.preventDefault(); // Prevent form submission
+
+  // Get form data
+  var email = document.getElementById("student-email").value;
+  var pass = document.getElementById("admin-password").value;
+
+ console.log(email)
+ if(!email){
+    alert("Values cant be empty")
+ }else{
+    window.location.href = `http://localhost:3000/users/${email}`;
+
+ }
+
+  // Clear form inputs
+  document.getElementById("name").value = "";
+  document.getElementById("email").value = "";
+});
+
+
+
+
+
+</script>
