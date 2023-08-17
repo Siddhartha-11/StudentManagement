@@ -29,6 +29,12 @@ exports.update_user = (req, res) =>{
 }
 
 
+
+
+
+
+
+
 //this one below
 // exports.view_user = (req, res) =>{
 //     axios.get('http://localhost:3000/api/users/', { params : { id : req.query.id }})

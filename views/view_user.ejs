@@ -5,6 +5,16 @@
 
 
 <style>
+
+
+
+.logout-btn {
+    position: absolute;
+    top: 10px; /* Adjust the top distance as needed */
+    right: 10px; /* Adjust the right distance as needed */
+    padding: 20px;
+}
+
     body {
       font-family: Arial, sans-serif;
       margin: 20px;
@@ -24,14 +34,16 @@
 }
 
 h1 {
-  color: #333;
+  color: #46769d;
   text-align: center;
+  margin-top: 40px;
 }
 
 form {
-  background-color: #fff;
+  background-color: #bae2dc;
   padding: 20px;
   border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 label {
@@ -42,7 +54,7 @@ label {
 
 input, select, textarea {
   width: 100%;
-  padding: 10px;
+  padding: 5px;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 16px;
@@ -62,11 +74,11 @@ table {
     th, td {
       padding: 8px;
       text-align: left;
-      border-bottom: 1px solid #ddd;
+      border-bottom: 1px solid #d6e1e1;
     }
     
     th {
-      background-color: #f2f2f2;
+      background-color: #9d92a8;
     }
 
 @media only screen and (max-width: 768px) {
@@ -91,34 +103,39 @@ table {
     <% const gradearr = user.grade; %>
 
   <center>
-    <h1>Student Information</h1> 
+    <h1>Student Dashboard</h1> 
     
   </center>
-  <a href="http://localhost:3000/" class="logout-btn">Logout</a>
+</div><div class="container">
+  <div class="text-center">
+      <a href="/" class="logout-btn">
+          <span class="text-gradient">Log Out</span></a>
+  </div>
+</div>
   
   <form id="studentForm">
-    <br> <br><label for="name">Name:</label> <br> <br>
+    <br> <br><label for="name">Name:</label>
     <input type="text" id="name"  value=<%= user.name %>>
   
-    <br> <br><label for="email">Email:</label> <br> <br>
+    <br> <br><label for="email">Email:</label>
     <input type="email" id="email" value=<%= user.email %>>
   
-    <br> <br><label for="gender">Gender:</label> <br> <br>
+    <br> <br><label for="gender">Gender:</label>
     <input type="gender" id="gender" value=<%= user.gender %>>
   
-    <br> <br><label for="status">Status:</label> <br> <br>
+    <br> <br><label for="status">Status:</label>
     <input type="text" id="status" value=<%= user.status %>>
   
-    <br> <br><label for="dob">Date of Birth:</label> <br> <br>
+    <br> <br><label for="dob">Date of Birth:</label>
     <input type="dob" id="dob" value=<%= user.DOB %>>
   
-    <br> <br><label for="phone">Phone Number:</label> <br> <br>
+    <br> <br><label for="phone">Phone Number:</label>
     <input type="tel" id="phone" value=<%= user.Phone %>>
   
-    <br> <br><label for="address">Address:</label> <br> <br>
+    <br> <br><label for="address">Address:</label>
     <input id="address" value=<%= user.Address %>></input>
   
-    <br> <br><label for="roll">Roll Number:</label> <br> <br>
+    <br> <br><label for="roll">Roll Number:</label>
     <input type="text" id="roll" value=<%= user.Roll %>>
 
     

@@ -327,9 +327,11 @@ input[type="submit"]:hover {
 }
 
 
-.logout-btn{
-    float: right;
-   padding: 20px;
+.logout-btn {
+    position: absolute;
+    top: 10px; /* Adjust the top distance as needed */
+    right: 10px; /* Adjust the right distance as needed */
+    padding: 20px;
 }
 
 
